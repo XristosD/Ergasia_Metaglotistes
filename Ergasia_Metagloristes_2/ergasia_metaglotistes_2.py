@@ -45,5 +45,5 @@ while(go):
             print(m, end=' ')
     print(' =>\n')
 
-        
+wait=input()        
 
