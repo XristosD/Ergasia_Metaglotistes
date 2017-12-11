@@ -1,6 +1,6 @@
 import random
 
-
+#generate random sentences
 
 class ekfrash:
     name='ekfrash'
