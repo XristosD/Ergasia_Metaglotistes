@@ -36,13 +36,17 @@ bool S()
     if(next == '[')
     {
         nexttoken();
-        A();
-        if(next == ']')
+        if (A())
         {
-            return 1;
+            if(next == ']')
+            {
+                return 1;
+            }
+            else
+                return 0;
         }
-        else
-           return 0;
+        else return  0;
+
     }
     else
         return 0;
@@ -68,10 +72,11 @@ bool B()
         nexttoken();
         return true;
     }
-    else
+    else if (S())
     {
-       return S() ;
+       return 1 ;
     }
+    else return 0;
 }
 
 bool E()
@@ -88,15 +93,16 @@ bool E()
 int main()
 {
     do{
-            cout<<"write your sentence: ";
+            nextIndex = 0;
+            cout<<"\nwrite your sentence: ";
             cin>>sentence;
             nexttoken();
-            if(S() && next == EOF)
+            if(S() )
             {
                 cout<<"TRUE";
             }
             else cout<<"false";
-        }while(sentence=="stop");
+        }while(sentence!="stop");
 
     return 0;
 }
