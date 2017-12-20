@@ -14,67 +14,75 @@
 #include <iostream>
 #include <string>
 #include <iostream>
+#include <stdio.h>
 using namespace std;
 
-string next = "";
+char next ;
 string sentence = "";
 int nextIndex =0;
-void A();
-void B();
-void E();
+bool A();
+bool B();
+bool E();
 
 void nexttoken()
 {
-    next = sentence.;
+    next = sentence[nextIndex];
     cout<<next;
     nextIndex++;
 }
 
-void S()
+bool S()
 {
-    if(next == "[")
+    if(next == '[')
     {
         nexttoken();
         A();
-        if(next == "]")
+        if(next == ']')
         {
-            cout<<"true";
+            return 1;
         }
         else
-            cout<<"false1";
+           return 0;
     }
     else
-        cout<<"false2";
+        return 0;
 }
 
-void A()
+bool A()
 {
-    B();
-    E();
+    if(B())
+    {
+        if(E())
+        {
+            return 1;
+        }
+        else return 0;
+    }
+    else return 0;
 }
 
-void B()
+bool B()
 {
-    if(next == "x" || next == "y")
+    if(next == 'x' || next == 'y')
     {
         nexttoken();
+        return true;
     }
     else
     {
-        S();
+       return S() ;
     }
-    return;
 }
 
-void E()
+bool E()
 {
-    if(next == ":" || next == "+")
+    if(next == ':' || next == '+')
     {
         nexttoken();
-        A();
+        return A();
     }
     else
-        return;
+        return 1;
 }
 
 int main()
@@ -83,10 +91,11 @@ int main()
             cout<<"write your sentence: ";
             cin>>sentence;
             nexttoken();
-            if(S() && next ==-1)
+            if(S() && next == EOF)
             {
                 cout<<"TRUE";
             }
+            else cout<<"false";
         }while(sentence=="stop");
 
     return 0;
