@@ -27,7 +27,6 @@ bool E();
 void nexttoken()
 {
     next = sentence[nextIndex];
-    cout<<next;
     nextIndex++;
 }
 
@@ -40,6 +39,7 @@ bool S()
         {
             if(next == ']')
             {
+                nexttoken();
                 return 1;
             }
             else
@@ -97,11 +97,11 @@ int main()
             cout<<"\nwrite your sentence: ";
             cin>>sentence;
             nexttoken();
-            if(S() )
+            if(S() && next == NULL )
             {
                 cout<<"TRUE";
             }
-            else cout<<"false";
+            else cout<<"FALSE";
         }while(sentence!="stop");
 
     return 0;
