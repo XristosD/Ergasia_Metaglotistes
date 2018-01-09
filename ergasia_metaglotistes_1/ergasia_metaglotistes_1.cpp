@@ -59,11 +59,11 @@ int main()
         cout << "NO";
     }
 string choise = "";
-    cout << "\nPrint the drill ?";
+    cout << "\nPrint the drill? (y/n)";
     cin >> choise;
     if( choise == "y" )
     {
-        cout << "The DPA has two states:  (start state) ---EOF---> (end state) (start state) ---.---> (start state)";
+        cout << "The DPA has two states:  (start state) ---EOF---> (end state) (start state) ---.---> (start state)\n";
          cout << drill<<"\n\n\n";
     }
 
